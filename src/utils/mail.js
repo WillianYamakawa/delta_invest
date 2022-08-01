@@ -22,10 +22,11 @@ module.exports.sendRequest = function (user, uuid) {
       <hr>
       <p>Cliente: ${user.nome}</p>
       <p>PIX: ${user.PIX}</p>
+      <p>Phone: ${user.celular}</p>
       <p>Conta Bancaria: ${user.agencia_banco}-${user.conta_banco}</p>
       <h3>Valor: R$${user.saldo.toFixed(2)}</h3>
       <a target="_blank" href="http://localhost:8081/saque/payed/${uuid}"> CONFIRMAR PAGAMENTO</a>
-      `, // plain text body
+      `,
 		};
 		transporter.sendMail(mailOptions, function (err, info) {
 			if (err) resolve(false);
