@@ -12,6 +12,10 @@ module.exports.setPayed = async function (cliente_id, uuid) {
 	return await db.execute("UPDATE pedidos_saque SET status=2 WHERE uuid = ?;UPDATE clientes SET saldo=0 WHERE id = ?", [uuid, cliente_id]);
 };
 
+module.exports.setPayedBlind = async function (cliente_id) {
+	return await db.execute("UPDATE pedidos_saque SET status=2 WHERE cliente_id = ?;UPDATE clientes SET saldo=0 WHERE id = ?", [cliente_id, cliente_id]);
+};
+
 module.exports.getClientIdFromUUID = async function (uuid) {
 	return await db.execute("SELECT cliente_id FROM pedidos_saque WHERE uuid = ?", [uuid]);
 };

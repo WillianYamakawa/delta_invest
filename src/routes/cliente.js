@@ -33,7 +33,7 @@ router.post('/insert', authAdm, async (req, res) => {
     if(!cliente) return res.sendStatus(400); //Valores nulos
 
     const query = await Clientes.insert(cliente);
-    if(query.err) return res.sendStatus(400)
+    if(query.err) return res.sendStatus(500)
 
     return res.sendStatus(200);
 })

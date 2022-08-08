@@ -12,6 +12,7 @@ module.exports.execute = function (sql, userInput = []) {
 	return new Promise((resolve, reject) => {
 		pool.getConnection((err, connection) => {
 			if (err) {
+				console.log(err)
 				connection.release();
 				resolve({ err: err, result: null });
 			}

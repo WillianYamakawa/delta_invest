@@ -6,9 +6,18 @@ module.exports.apply = async function (valor) {
 		`
         INSERT INTO lucros SET data=NOW(), valor = ?;
         UPDATE clientes 
-        SET saldo = saldo + (valor_contrato * (3/100)) 
+        SET saldo = saldo + (valor_contrato * (?/100)), rendeu = rendeu + (valor_contrato * (?/100))
         WHERE ativo = 1
-	    AND MONTH(NOW()) + (12 * YEAR(NOW())) - MONTH(data_inicio_contrato) + (12 * YEAR(data_inicio_contrato)) >= 2;
-        `, [valor]
+	    AND DATEDIFF(NOW(), data_inicio_contrato) >= 30;
+        `, [valor, valor, valor]
+	);
+};
+
+
+module.exports.getAll = async function () {
+	return await db.execute(
+		`
+        SELECT id, data, DATE_FORMAT(data, "%d/%m/%Y") as date, valor FROM lucros ORDER BY data DESC
+        `
 	);
 };

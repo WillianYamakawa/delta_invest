@@ -15,3 +15,19 @@ module.exports.getClienteIdFromToken = function(token){
         return -1;
     }
 }
+
+module.exports.generateAdm = function(id){
+    return jwt.sign({id:id, type:"adm"}, process.env.TOKEN_PRIVATE, {
+        expiresIn: "1d"
+    })
+}
+
+module.exports.getAdmIdFromToken = function(token){
+    try{
+        const result = jwt.verify(token, process.env.TOKEN_PRIVATE)
+        if(result.type == "adm") return result.id;
+        else return -1;
+    }catch(e){
+        return -1;
+    }
+}
