@@ -23,7 +23,7 @@ router.post("/request", authCliente, async (req, res) => {
 
     const now = new Date();
 	const dayAllowed = whenAllowed(user, query2.result); //Checa se cliente pode realizar saque
-    if(dayAllowed.getFullYear() === now.getFullYear() && dayAllowed.getMonth() === now.getMonth() && dayAllowed.getDate() === now.getDate()){
+    if((now.getDate() + (30 * now.getMonth()) + (30 * 12 * now.getFullYear()) >= dayAllowed.getDate() + (30 * dayAllowed.getMonth()) + (30 * 12 * dayAllowed.getFullYear())) && now.getDate() == 10){
         //ALLOWED
     }else{
         return res.sendStatus(403);
@@ -70,13 +70,24 @@ router.get("/allowed", authCliente, async (req, res) => {
 	const query2 = await Saques.getLastRequestDateFromClient(user.id);
 	if (query2.err) return res.sendStatus(500);
 
-    const now = new Date();
+    const now = new Date('2022/04/10');
     const dayAllowed = whenAllowed(user, query2.result);
-	console.log(dayAllowed)
-    
-    if(dayAllowed.getFullYear() === now.getFullYear() && dayAllowed.getMonth() === now.getMonth() && dayAllowed.getDate() === now.getDate()){
+
+	console.log((now.getDate() + (30 * now.getMonth()) + (30 * 12 * now.getFullYear())));
+	console.log(dayAllowed.getDate() + (30 * dayAllowed.getMonth()) + (30 * 12 * dayAllowed.getFullYear()));
+
+    if((now.getDate() + (30 * now.getMonth()) + (30 * 12 * now.getFullYear()) >= dayAllowed.getDate() + (30 * dayAllowed.getMonth()) + (30 * 12 * dayAllowed.getFullYear())) && now.getDate() == 10){
         return res.json({allowed: true});
     }else{
+		if(now.getMonth + (12 * now.getFullYear()) >= dayAllowed.getMonth + (12 * dayAllowed.getFullYear())){
+			let dayAble = null;
+			if(now.getDate() >= 10){
+				dayAble = new Date(now.setMonth(now.getMonth() + 1))
+			}else{
+				dayAble = now;
+			}
+			return res.json({allowed: `10/${dayAble.getMonth() + 1}/${dayAble.getFullYear()}`});
+		}
         return res.json({allowed: `${dayAllowed.getDate()}/${dayAllowed.getMonth() + 1}/${dayAllowed.getFullYear()}`});
     }
 });
