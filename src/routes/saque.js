@@ -87,13 +87,15 @@ function whenAllowed(user, pedidos) {
 	if (pedidos.length == 0) {
 		const day = new Date(user.data_inicio_contrato);
 		
-		if (day.getDate() <= 10) {
-			const nextMonth = new Date(day.setMonth(day.getMonth() + 1));
+		// if (day.getDate() <= 10) {
+		// 	const firstDay = new Date(day.setDate(1))
+		// 	const nextMonth = new Date(firstDay.setMonth(firstDay.getMonth() + 1));
+		// 	date_next = new Date(nextMonth.setDate(10));
+		// } else {
+			const firstDay = new Date(day.setDate(1))
+			const nextMonth = new Date(firstDay.setMonth(firstDay.getMonth() + 2));
 			date_next = new Date(nextMonth.setDate(10));
-		} else {
-			const nextMonth = new Date(day.setMonth(day.getMonth() + 2));
-			date_next = new Date(nextMonth.setDate(10));
-		}
+		// }
 	}else{
         const day = new Date(pedidos[0].data)
         const now = new Date()

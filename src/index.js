@@ -10,9 +10,8 @@ setInterval(async function () {
 		);
 		const responseJson = response.data;
 		fs.writeFileSync(process.env.FILE_ETH, JSON.stringify(responseJson));
-		console.log('write')
 	}catch(e){
-		console.log('ERRO AO CARREGAR ETH')
+
 	}
 }, 60*60*1000);
 
