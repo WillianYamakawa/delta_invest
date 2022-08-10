@@ -21,13 +21,21 @@ router.post("/request", authCliente, async (req, res) => {
 	const query2 = await Saques.getLastRequestDateFromClient(user.id);
 	if (query2.err) return res.sendStatus(500);
 
-    const now = new Date();
-	const dayAllowed = whenAllowed(user, query2.result); //Checa se cliente pode realizar saque
-    if((now.getDate() + (30 * now.getMonth()) + (30 * 12 * now.getFullYear()) >= dayAllowed.getDate() + (30 * dayAllowed.getMonth()) + (30 * 12 * dayAllowed.getFullYear())) && now.getDate() == 10){
-        //ALLOWED
-    }else{
-        return res.sendStatus(403);
-    }
+	//Checa se cliente pode fazer saque
+	const now = new Date(); //Dia de hoje
+	const lastRequestDate = query2.result[0]; //data do ultimo pedido
+	if(now.getDate() == 10 && user.saldo > 0)	//Checa se hj e dia 10 e se o user tem saldo
+	{
+		if(lastRequestDate){ //Se houve pedido
+			const lrdData = new Date(lastRequestDate.data); //Cast
+			if(lrdData.getDate() == 10){ //Se o user ja fez um pedido hj
+				return res.sendStatus(403);
+			}
+		}
+	}else{ //Hj nao 'e dia 10 ou user nao tem saldo
+		return res.sendStatus(403);
+	}
+	 
 
 	const query3 = await Saques.insert(req.cliente_id, uuid);
 	if (query3.err) return res.sendStatus(500);
@@ -54,14 +62,13 @@ router.post("/payedblind", async (req, res) => {
 	const { id } = req.body;
 	if (!id) return res.sendStatus(400);
 
-	const query2 = await Saques.setPayedBlind(id)
+	const query2 = await Saques.setPayedBlind(id);
 	if (query2.err) return res.sendStatus(500);
 
 	return res.sendStatus(200);
 });
 
 router.get("/allowed", authCliente, async (req, res) => {
-
 	const query = await Clientes.getById(req.cliente_id);
 	if (query.err) return res.sendStatus(500);
 
@@ -70,55 +77,21 @@ router.get("/allowed", authCliente, async (req, res) => {
 	const query2 = await Saques.getLastRequestDateFromClient(user.id);
 	if (query2.err) return res.sendStatus(500);
 
-    const now = new Date('2022/04/10');
-    const dayAllowed = whenAllowed(user, query2.result);
-
-	console.log((now.getDate() + (30 * now.getMonth()) + (30 * 12 * now.getFullYear())));
-	console.log(dayAllowed.getDate() + (30 * dayAllowed.getMonth()) + (30 * 12 * dayAllowed.getFullYear()));
-
-    if((now.getDate() + (30 * now.getMonth()) + (30 * 12 * now.getFullYear()) >= dayAllowed.getDate() + (30 * dayAllowed.getMonth()) + (30 * 12 * dayAllowed.getFullYear())) && now.getDate() == 10){
-        return res.json({allowed: true});
-    }else{
-		if(now.getMonth + (12 * now.getFullYear()) >= dayAllowed.getMonth + (12 * dayAllowed.getFullYear())){
-			let dayAble = null;
-			if(now.getDate() >= 10){
-				dayAble = new Date(now.setMonth(now.getMonth() + 1))
-			}else{
-				dayAble = now;
+	//Checa se cliente pode fazer saque
+	const now = new Date(); //Dia de hoje
+	const lastRequestDate = query2.result[0]; //data do ultimo pedido
+	if(now.getDate() == 10 && user.saldo > 0)	//Checa se hj e dia 10 e se o user tem saldo
+	{
+		if(lastRequestDate){ //Se houve pedido
+			const lrdData = new Date(lastRequestDate.data); //Cast
+			if(lrdData.getDate() == 10){ //Se o user ja fez um pedido hj
+				return res.json({allowed: false});
 			}
-			return res.json({allowed: `10/${dayAble.getMonth() + 1}/${dayAble.getFullYear()}`});
 		}
-        return res.json({allowed: `${dayAllowed.getDate()}/${dayAllowed.getMonth() + 1}/${dayAllowed.getFullYear()}`});
-    }
+	}else{ //Hj nao 'e dia 10 ou user nao tem saldo
+		return res.json({allowed: false});
+	}
+	return res.json({allowed: true});
 });
-
-function whenAllowed(user, pedidos) {
-	let date_next = null
-
-	if (pedidos.length == 0) {
-		const day = new Date(user.data_inicio_contrato);
-		
-		// if (day.getDate() <= 10) {
-		// 	const firstDay = new Date(day.setDate(1))
-		// 	const nextMonth = new Date(firstDay.setMonth(firstDay.getMonth() + 1));
-		// 	date_next = new Date(nextMonth.setDate(10));
-		// } else {
-			const firstDay = new Date(day.setDate(1))
-			const nextMonth = new Date(firstDay.setMonth(firstDay.getMonth() + 2));
-			date_next = new Date(nextMonth.setDate(10));
-		// }
-	}else{
-        const day = new Date(pedidos[0].data)
-        const now = new Date()
-        if(now.getMonth() + (12 * now.getFullYear()) == day.getMonth() + (12 * day.getFullYear())){
-            const nextMonth = new Date(now.setMonth(now.getMonth + 1));
-            date_next = new Date(nextMonth.setDate(10));
-        }else{
-            date_next = new Date(now.setDate(10))
-        }
-    }
-
-    return date_next;
-}
 
 module.exports = router;
