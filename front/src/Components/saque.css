@@ -1,0 +1,112 @@
+.modal-saque{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100vw;
+    width: 600px;
+    padding: 20px 50px;
+    overflow: hidden;
+    background-color: #F5F6FA;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'Rajdhani', sans-serif;
+    height: 370px;
+}
+
+.modal-saque h1{
+    font-family: inherit;
+    font-size: 37px;
+    margin-bottom: 0px;
+    color: #017bee;
+}
+
+.modal-saque p{
+    font-family: inherit;
+    font-size: 20px;
+    color: rgb(114, 114, 114)
+}
+
+.random-text{
+    color: var(--main-blue-color) !important;
+    text-decoration: underline;
+    letter-spacing: 2px;
+    font-size: 25px !important;
+    margin: 0;
+    margin-bottom: 17px;
+}
+
+.modal-saque button{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    border-radius: 0px;
+    height: 60px;
+    border:none;
+    background-color: var(--main-blue-color);
+    color: white;
+    font-size: 27px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.modal-saque button:hover{
+    background-color: rgb(200, 222, 255);
+    color: var(--main-blue-color);
+    transition: .2s;
+}
+
+.modal-loading, .modal-success, .modal-error{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    max-width: 100vw;
+    height: 360px;
+    overflow: hidden;
+    background-color: #F5F6FA;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+@media (max-width: 800px){
+    .modal-loading, .modal-success, .modal-error, .modal-saque{
+        border-radius: 0px;
+    }
+
+    .modal-saque{
+        padding: 30px 10px;
+    }
+}
+
+.saque-success{
+    padding: 50px;
+    color: rgb(0, 150, 0);
+    font-size: 150px;
+    flex-direction: column;
+}
+
+.saque-success p{
+    font-size: 22px;
+    color: rgb(0, 158, 34);
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.saque-error{
+    flex-direction: column;
+    padding: 50px;
+    color: rgb(255, 0, 0);
+    font-size: 150px;
+}
+
+.saque-error p{
+    font-size: 22px;
+    color: rgb(255, 0, 0);
+    font-family: 'Rajdhani', sans-serif;
+}

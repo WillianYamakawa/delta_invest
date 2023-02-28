@@ -1,0 +1,81 @@
+.saque-nav{
+    display: flex;
+    align-items: center;
+}
+
+.btn-saque{
+    padding: 0px 50px;
+    height: 40px;
+    border-radius: 2px;
+    border: 2px solid var(--main-blue-color);
+    background-color: var(--main-blue-color);
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: .2s;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.btn-saque:hover{
+    background-color: #dde8ff;
+    color: var(--main-blue-color);
+}
+
+.p-blue{
+    color: #0084ff;
+    font-size: 17px;
+    font-family: 'Rajdhani', sans-serif;
+    background-color: #cfe8ff;
+    padding: 7px 20px;
+    border-radius: 30px;
+}
+
+@media (max-width: 700px){
+    .btn-saque{
+        font-size: 15px;
+        padding: 0px 30px;
+        margin-left: 5px;
+    }
+    .p-blue{
+        display: none;
+    }
+}
+
+.saquenav-error{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 0px;
+    color: red;
+    background-color: rgb(255, 207, 207);
+    padding: 3px 30px;
+    height: 70px;
+}
+
+.saquenav-error p{
+    font-size: 15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.not{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.not p{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    color: var(--main-blue-color);
+    background-color: #cfe8ff;
+    padding: 10px 30px;
+    border-radius: 30px;
+}

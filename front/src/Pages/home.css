@@ -1,0 +1,440 @@
+:root{
+    --main-blue-color: #0081dd;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+.left{
+    position: fixed;
+    top:0px;
+    left:0px;
+    width: 100px;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.219) 0px 5px 25px;
+    z-index: 999;
+    display: flex;
+    padding: 100px 0;
+}
+
+.detail-left{
+
+    position: absolute;
+    top: 50%;
+    width: 85px;
+    height: 500px;
+    transform: translate(0, -50%);
+}
+
+.logo-mobile, .div-logo-mobile{
+    display: none;
+}
+
+
+.d{
+    position: absolute;
+    top: 40px;
+    left: 30%;
+    width: 30px;
+}
+
+.home-icon{
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.main{
+    position: absolute;
+    top:0px;
+    left:100px;
+    background-color: #F5F6FA;
+    width: calc(100vw - 100px);
+    height: auto;
+    min-height: 100vh;
+}
+nav{
+    width: 100%;
+    height: 70px;
+    box-shadow: rgba(0, 0, 0, 0.062) 0px 5px 25px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 80px;
+    align-items: center;
+}
+
+.mercado{
+    color: #002D57;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    margin-top: -10px;
+}
+
+.eth-header{
+    display: flex;
+}
+
+.opt-text{
+    flex: 3;
+    margin-left: 60px;
+}
+
+.opt-period{
+    flex: 7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-period{
+    margin-right: 30vw;
+    transition: .2s;
+}
+
+.btn-period{
+    border: none;
+    font-family: 'Rajdhani', sans-serif;
+    padding: 7px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: rgb(190, 190, 190);
+    background-color: #F5F6FA;
+    cursor: pointer;
+    border: 1px solid #F5F6FA;
+    transition: .2s;
+}
+
+.btn-period:hover{
+    background-color: #ececec;
+}
+
+.btn-period.active:hover{
+    background: var(--main-blue-color);
+}
+
+.btn-period.active{
+    color: white;
+    background: var(--main-blue-color);
+}
+
+.btn-1{
+    border-right: 1px solid #c2c2c2;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.btn-3{
+    border-left: 1px solid #c2c2c2;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.mercado-eth{
+    color: var(--main-blue-color);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 27px;
+    margin-top: -10px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.welcome{
+    color: var(--main-blue-color);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 35px;
+}
+
+@media (max-width: 1200px){
+    .welcome{
+        display: none;
+    }
+    .left{
+        display: none;
+    }
+    .main{
+        left: 0;
+        width: 100vw;
+    }
+    nav{
+        justify-content: space-between;
+    }
+    .logo-mobile{
+        position: absolute;
+        display: block;
+        top: 10px;
+        left: 30px;
+        width: 20px;
+    }
+
+    .div-logo-mobile{
+        display: block;
+    }
+}
+
+
+
+@media (max-width: 700px){
+    
+    .card{
+        width: 80vw;
+    }
+    
+    nav{
+        padding: 0px 30px;
+        justify-content: center;
+    }
+}
+
+.account-nav{
+    height: 40px;
+    padding: 10px 20px;
+    display: flex;
+    border-radius: 9px;
+    align-items: center;
+    cursor: pointer;
+    color:rgb(88, 88, 88)
+}
+
+@media (max-width: 900px){
+    .user-name{
+        display: none;
+    }
+
+    .account-nav{
+        position: absolute;
+        right: 10px;
+        top: 15px;
+        color: red;
+    }
+
+    nav{
+        justify-content: center;
+    }
+}
+
+.user-name{
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: .2s;
+    font-weight: bold;
+}
+
+.account-nav:hover{
+    color: rgb(255, 30, 0)
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.cards{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 0px 50px;
+    z-index: 2;
+    margin-bottom: 20px;
+}
+
+.card{
+    display: flex;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 22px 0px #0000001A;
+    border-radius: 18px;
+    padding: 70px 0px;
+    min-width: 300px;
+    height: 130px;
+    margin: 20px 10px;
+}
+
+.card-icon{
+    flex: 3;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+}
+
+.card-content{
+    flex: 7;
+}
+
+.card-icon-container{
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #CCE2F1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--main-blue-color);
+    font-size: 35px;
+    margin: 7px;
+}
+
+.card-title{
+    color: #353535;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 30px;
+}
+.card-sub{
+    margin-top: -25px;
+    color: #7c7c7c;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+}
+
+@media (max-width: 1400px){
+    .cards{
+        display: flex;
+        overflow-x: scroll;
+        justify-content: flex-start;
+        padding-left: 10px;
+    }
+    .cards::-webkit-scrollbar {
+        display: none;
+    }
+
+}
+
+.graph{
+    width: 100%;
+    box-shadow: 300px 300px 30px #F5F6FA inset;
+}
+
+.layer-graph{
+    z-index: 9;
+    position: absolute;
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(90deg, rgba(245,246,250,1) 0%, rgba(245,246,250,0.14609593837535018) 9%, rgba(255,255,255,0.11808473389355745) 91%, rgba(245,246,250,1) 100%);
+}
+
+@media (max-width: 1000px){
+    .layer-graph{
+        height: 250px;
+    }
+
+    .eth-header{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .opt-text{
+        margin-left: 0;
+    }
+    .buttons-period{
+        margin-right: 0px;
+        margin-top: 20px;
+    }
+}
+
+.mercado.top{
+    margin-top: 20px;
+    margin-bottom: 0px;
+    margin-left: 60px;
+}
+
+@media (max-width: 1000px){
+    .mercado.top{
+        margin: auto;
+        margin-top: 20px;
+    }
+}
+
+.custom-tooltip{
+    width: 120px;
+    border-radius: 10px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.719);
+}
+.custom-tooltip .label{
+    margin-top: 0px;
+    color: #616161;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.custom-tooltip .valor{
+    margin-bottom: 0px;
+    color: rgb(0, 0, 0);
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.erro-graph{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 200px;
+}
+
+.erro-graph h1{
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.botao-lucros{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, 0px);
+    padding: 10px 20px;
+    border-radius: 20px;
+    border:none;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: white;
+    background:  linear-gradient(318deg, rgb(28, 32, 37) 0%, rgb(56, 61, 68) 100%);
+    box-shadow: 0px 4px 22px 0px #0000009f;
+    transition: .3s;
+    cursor: pointer;
+}
+
+@media (max-width: 1000px){
+    .botao-lucros{
+        position:relative;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+.botao-lucros:hover{
+    padding: 10px 80px;
+    transition: .3s;
+}
+
+.div-center{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.div-center-error{
+    font-size: 200px;
+    color: red;
+}
+
+.div-center-error p{
+    font-size: 30px;
+}

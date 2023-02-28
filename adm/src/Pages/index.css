@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap');
+
+*{
+    font-family: 'Rajdhani', sans-serif;
+}
+.background-vanta{
+    width: 100vw;
+    height: 100vh;
+}
+
+.shade{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.884) 0%, rgba(0, 0, 0, 0.212) 100%);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top:0px;
+    display: flex;
+    text-align: center;
+}
+
+.login{
+    height: 600px;
+    width: 500px;
+    background-color: rgb(230, 230, 230);
+    border-radius: 10px;
+    padding: 50px;
+    border-left: 6px solid #cfcfcf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.two{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.one{
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.h1-title-login{
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    margin-top: 0px;
+}
+
+.span-blue{
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    text-transform: capitalize;
+    color: #0173c5;
+}
+
+.submit{
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    padding: 10px 140px;
+    border-radius: 10px;
+    border: 1px solid rgb(230, 230, 230);
+    background: linear-gradient(318deg, rgb(1, 101, 173) 0%, rgb(1, 140, 240) 100%);
+    color: white;
+    cursor: pointer;
+    transition: .2s;
+    margin-top: 10px;
+}
+
+.submit:hover{
+    padding: 10px 150px;
+}
+
+.forgot-modal{
+    width: 600px;
+    max-width: 100vw;
+    height: 300px;
+    border-radius: 10px;
+    padding: 50px;
+    border-left: 7px solid #0173c5;
+    background-color: rgb(230, 230, 230);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1100px){
+    .container{
+        flex-direction: column;
+    }
+
+    .one{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .login{
+        height: 500px !important;
+        width: 90%;
+        margin-bottom: 50px;
+        padding: 20px;
+        height: 50vh;
+    }
+
+    .h1-title-login{
+        margin-top: 20px;
+    }
+
+
+    img{
+        width: 100px;
+    }
+
+    .submit{
+        padding: 10px 30vw;
+    }
+
+    .submit:hover{
+        padding: 10px 30vw;
+    }
+
+    .two{
+        flex:6;
+        justify-content: baseline;
+        align-items: baseline;
+    }
+
+    .shade{
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.884) 0%, rgba(0, 0, 0, 0.212) 100%);
+    }
+}
